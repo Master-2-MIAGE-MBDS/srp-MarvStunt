@@ -1,13 +1,16 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
-        taskManager.addTask("Tache 1", "Description de la tache 1");
-        taskManager.addTask("Tache 2", "Description de la tache 2");
-        taskManager.addTask("Tache 3", "Description de la tache 3");
+        TaskRepository taskRepository = new TaskRepository();
+        TaskRepository.addTask("Tache 1", "Description de la tache 1");
+        TaskRepository.addTask("Tache 2", "Description de la tache 2");
+        TaskRepository.addTask("Tache 3", "Description de la tache 3");
 
-        taskManager.markTaskAsComplete(1);
+        taskRepository.markTaskAsComplete(1);
 
-        taskManager.printCompletedTasks();
-        taskManager.printPendingTasks();
+        TaskPrinting taskPrinting = new TaskPrinting();
+        taskPrinting.printCompletedTasks(taskRepository.getTasks());
+        taskPrinting.printPendingTasks(taskRepository.getTasks());
     }
 }
